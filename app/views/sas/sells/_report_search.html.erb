@@ -1,0 +1,20 @@
+<div class="search_nav">
+  <%= form_tag("/sas/sells/report", method: :get) do -%>
+    <div class="item-query">
+      <label>日期</label>
+      <input type="date" class="width-120" name="q[created_at_gteq]" value='<%= @beginning %>'>
+      <input type="date" class="width-120" name="q[created_at_lteq]" value='<%= @end %>'>
+    </div>
+
+    <div class="item-query">
+      <label>类型</label>
+      <%= select_tag 'q[orderable_type_eq]', options_for_select([["商品", "StoreMaterialSaleinfo"], ["服务", "StoreService"]], @orderable_type), include_blank: '全部', class: "width-100" %>
+    </div>
+
+    <%= submit_tag "查询", class: "btn query_btn do_search_result" %>
+    <div class="query_div">
+      <a href="#" class="export_btn btn">导出</a>
+    </div>
+  <% end %>
+
+</div>

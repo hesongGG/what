@@ -1,0 +1,81 @@
+<div class="page_head main_top">
+  <span class="font-18 margin-right-15">销售分析</span>
+
+  <select class="width-90" onchange="self.location.pathname=options[selectedIndex].value">
+    <option value="<%= report_sas_sells_path %>">报表</option>
+    <option value="<%= sas_sells_path %>" >图形分析</option>
+  </select>
+</div>
+
+
+<div class="details sales_analysis">
+
+  <div class="list_table">
+
+    <%= render 'report_search' %>
+
+    <table cellpadding="0" cellspacing="0" class="index_list">
+
+      <thead>
+        <tr>
+          <th class="border-right-0">#</th>
+          <th>名称</th>
+          <th>类型</th>
+          <th>条码/代码</th>
+          <th>规格</th>
+          <th>分类</th>
+          <th>数量</th>
+          <th>零售价</th>
+          <th>优惠</th>
+          <th>实收</th>
+          <th>收款方式</th>
+          <th>成本</th>
+          <th>毛利</th>
+        </tr>
+      </thead>
+
+      <% if @order_items.present? %>
+        <tbody class="content">
+          <% @order_items.each.with_index(1) do |item, index| %>
+            <tr >
+              <td><%= index %></td>
+              <td><%= item.orderable.name %></td>
+              <td><%= item.type_cn_name %></td>
+              <td><%= item.barcode %></td>
+              <td><%= item.speci %></td>
+              <td><%= item.category_name %></td>
+              <td><%= item.quantity %></td>
+              <td><%= item.retail_price %></td>
+              <td><%= item.discount %></td>
+              <td><%= item.amount %></td>
+              <td><%= item.store_order.try(:payments).try(:last).try(:payment_method_cn_name) %></td>
+              <td><%= item.cost_price %></td>
+              <td><%= item.gross_profit %></td>
+            </tr>
+          <% end %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="13" class="text-align-right">
+              <span>实收金额合计：</span>
+              <label><%= @order_items.total_amount %></label>
+            </td>
+          </tr>
+        </tfoot>
+
+      <% else %>
+        <tbody class="no_search_result" style="display:none;">
+          <tr>
+            <td class="font-16" colspan="13">
+              <i class="fa fa-info-circle font-34 margin-right-8"></i>
+              很抱歉，没有找到与此相关联的报表，或者没有该报表，请核实后再进行操作
+            </td>
+          </tr>
+        </tbody>
+      <% end %>
+
+    </table>
+
+  </div>
+
+</div>

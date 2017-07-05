@@ -1,0 +1,5 @@
+<%if @captcha.present?%>
+  $("input#captcha").val("<%= @captcha.id %>");
+<% else %>
+  ZhanchuangAlert('手机号不存在!');
+<% end %>

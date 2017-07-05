@@ -1,0 +1,74 @@
+zh-CN:
+  enums:
+    store_subscribe_order:
+      state:
+        pending: 未执行
+        processing: 执行中
+        done: 已执行
+      order_type:
+        auto: 自主
+    store_order:
+      state:
+        pending: 草稿
+        queuing: 待施工
+        processing: 施工中
+        paying: 待付款
+        finished: 已完成
+      task_status:
+        task_pending: 草稿
+        task_queuing: 待施工
+        task_processing: 施工中
+        task_checking: 检查中
+        task_checked: 验收通过
+        task_finished: 完工
+    store_service_remind:
+      mode:
+        sms: 短信
+        wechat: 微信
+      trigger_timing:
+        ordered: 开单后
+        started: 技师上岗后
+        finished: 施工结束后
+    store_customer_entity:
+      property:
+        company: 集团客户
+        personal: 个人客户
+    store_customer:
+      education:
+        middle: 初中及以下
+        high: 高中或中专
+        academy: 专科
+        graduate: 本科
+        postgraduate: 硕士以上
+      income:
+        ilow: 5000以下
+        imiddle: 5000 ~ 10000
+        iupper: 10000 ~ 30000
+        ihigh: 30000以上
+      profession:
+        it: 信息技术
+        finance: 金融
+        energy: 能源
+        education: 教育
+        engineering: 工程
+        others: 其他
+    store_customer_settlement:
+      credit:
+        unpermitted: 不允许挂账
+        unlimited: 不限金额
+        custom: 自定义
+      notice_period:
+        _3days: 月底前3天
+        _5days: 月底前5天
+        _7days: 月底前7天
+      payment_mode:
+        cash: 现金
+        bankcard: 银行卡
+        cheque: 支票
+        alipay: 支付宝
+        wechatpay: 微信支付
+        deposit: 储值余额
+        internalcredit: 挂账
+      invoice_type:
+        common: 普票
+        extra: 增值税发票

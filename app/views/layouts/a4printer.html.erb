@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Printer</title>
+    <meta name="description" content="The Printer Page">
+    <%= stylesheet_link_tag "a4printer_layout", media: :all %>
+  </head>
+  <body>
+      <button class='print_btn' onclick="print();">打印单据</button>
+      <main id='main'>
+        <%= yield %>
+      </main>
+  </body>
+</html>

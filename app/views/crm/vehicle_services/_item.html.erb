@@ -1,0 +1,14 @@
+<tr>
+  <td>
+    <% item.workflow_mechanics.each do |workflow| %>
+      <% workflow.mechanics.each do |m| %>
+        <label><%= m.full_name %></label>
+      <% end %>
+    <% end %>
+  </td>
+  <td><%= item.orderable.name %></td>
+  <td><%= item.price %></td>
+  <td><%= item.quantity %></td>
+  <td><%= item.discount %></td>
+  <td><%= item.amount %></td>
+</tr>

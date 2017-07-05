@@ -1,0 +1,6 @@
+<% @orders.each do |order| %>
+  <div class="order_item slide_up" id="js-order-<%= order.id%>" >
+    <%= render 'basic_info', order: order %>
+    <%= render 'dialog_info', order: order %>
+  </div>
+<% end %>

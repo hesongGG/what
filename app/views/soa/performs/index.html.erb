@@ -1,0 +1,35 @@
+<div class="main_top">
+  <h2>绩效提成</h2>
+  <%= render '/soa/shared/return' %>
+</div>
+
+<div class="details">
+  <%= render "/soa/shared/top_info" %>
+  <div class="details_content staff_commission">
+  <%= render "search" %>
+    <table class="head">
+      <thead>
+        <tr>
+          <th><label class="cursor-pointer date">日期<i class="fa fa-sort-down"></i></label></th>
+          <th>订单号</th>
+          <th>项目</th>
+          <th>摘要</th>
+          <th><label class="cursor-pointer">项目金额<i class="fa fa-sort-down"></i></label></th>
+          <th><label class="cursor-pointer">提成金额<i class="fa fa-sort-down"></i></label></th>
+        </tr>
+      </thead>
+    </table>
+
+    <table class="content">
+      <% if @date < Time.now.at_beginning_of_month %>
+        <%= render 'pass_month_commission' %>
+      <% else %>
+        <% if @staff.commission? %>
+          <%= render 'current_month_commission' %>
+        <% else %>
+          <strong><em><%= @staff.full_name %></em>未设置可获得提成或还不是正式员工，是否<%= link_to "设置", soa_staff_setting_path(@staff), class: "btn record_btn width-40" %>?</strong>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+</div>

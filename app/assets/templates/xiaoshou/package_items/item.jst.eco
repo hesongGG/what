@@ -1,0 +1,4 @@
+<li><%= @index %>.</li>
+<li><%= @item.name() %></li>
+<li><%= @item.category() %></li>
+<li><%= @item.amount() %></li>

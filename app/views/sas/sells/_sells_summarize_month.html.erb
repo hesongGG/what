@@ -1,0 +1,55 @@
+<div class="abstrct">
+  <div class="material_sales">
+    <div class="image">
+      <i class="fa fa-shopping-cart"></i>
+    </div>
+
+    <ul>
+      <li>商品销售</li>
+      <li><%= @material_amount %></li>
+      <li>本月</li>
+      <li class="position-relative">
+        <span><%= number_to_percentage((@material_growth_rate.abs * 100), precision: 1) %></span>
+        <i class="<%= @material_growth_rate >= 0 ? "fa fa-long-arrow-up" : "fa fa-long-arrow-down" %>"></i>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="service_sales">
+    <div class="image">
+      <i class="fa fa-car"></i>
+    </div>
+
+    <ul>
+      <li>服务销售</li>
+      <li><%= @service_amount %></li>
+      <li>本月</li>
+      <li class="position-relative">
+        <span><%= number_to_percentage((@service_growth_rate.abs * 100), precision: 1) %></span>
+        <i class="<%= @service_growth_rate >= 0 ? "fa fa-long-arrow-up" : "fa fa-long-arrow-down" %>"></i>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="package_sales">
+    <div class="image">
+      <i class="fa fa-credit-card"></i>
+    </div>
+
+    <ul>
+      <li>套餐销售</li>
+      <li><%= @package_amount %></li>
+      <li>本月</li>
+      <li class="position-relative">
+        <span><%= number_to_percentage((@package_growth_rate.abs * 100), precision: 1) %></span>
+        <i class="<%= @package_growth_rate >= 0 ? "fa fa-long-arrow-up" : "fa fa-long-arrow-down" %>"></i>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+
+

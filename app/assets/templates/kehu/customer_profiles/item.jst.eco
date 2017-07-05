@@ -1,0 +1,24 @@
+<td><%= @view.index + 1 %></td>
+<td><span class="span_border_left"><%= @entity.storeCustomer.get 'full_name' %></span></td>
+<td><%= @entity.storeCustomer.get 'phone_number' %></td>
+<td><%= @entity.categoryName() %></td>
+<td><%= @entity.storeCustomer.get 'vehicles_count'  %></td>
+<td></td>
+<% if @entity.storeCustomer.get 'has_customer_asset' : %>
+<td><%= '有' %></td>
+<% else : %>
+<td><%= '无'%></td>
+<% end %>
+<td><%= @entity.storeCustomer.get 'orders_count' %></td>
+<td><%= @entity.storeCustomer.get 'total_amount' %></td>
+<td></td>
+<td><%= @entity.storeCustomer.get 'integrity' %>%</td>
+<td><%= @entity.storeCustomer.get 'activeness' %>%</td>
+<td>
+</td>
+<td><%= @entity.storeCustomer.get 'operator' %></td>
+<td>
+  <a href="<%= @view.customerUrl() %>">详情
+    <i class="fa fa-angle-double-right font-size-16"></i>
+  </a>
+</td>

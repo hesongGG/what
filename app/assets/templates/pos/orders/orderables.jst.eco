@@ -1,0 +1,100 @@
+<div class="order_items_category">
+  <ul>
+    <li class="bg-color-8E81B8 color-fff" data-target=".js-orderables-materials">商品</li>
+    <li data-target=".js-orderables-services">服务</li>
+    <li data-target=".js-orderables-packages">套餐</li>
+    <li data-target='.js-orderables-assets'>客户资产</li>
+  </ul>
+</div>
+
+<div class="order_item order_commodity js-orderables-materials">
+  <div>
+    <form id='search-materials' class="order_search" action="/api/pos/products/materials.json" method="GET">
+      <label class="form-label">一级分类</label><select class='width-80' name="store_material_root_category_id">
+        <option value="">全部</option>
+        <% for category in @super_material_categories : %>
+          <option value="<%= category.id %>"><%= category.name %></option>
+        <% end %>
+      </select>
+      <label class="form-label">二级分类</label><select class='width-80' name="store_material_category_id"></select>
+      <label class="form-label">商品品牌</label><select class='width-80' name="store_material_brand_id">
+          <option value="">全部</option>
+          <% for category in @store_material_brands : %>
+            <option value="<%= category.id %>"><%= category.name %></option>
+          <% end %>
+      </select>
+      <label class="form-label">查找产品</label><input type="text" name="keyword" value="">
+      <input type="submit" value="查 询">
+    </form>
+  </div>
+  <div class="matrial_order_title orderables_title">
+    <ul>
+      <li>#</li>
+      <li>名称</li>
+      <li>规格</li>
+      <li>销售类别</li>
+      <li>积分</li>
+      <li>库存</li>
+      <li>零售价</li>
+      <li></li>
+    </ul>
+  </div>
+  <div class="matrial_orders orderables" id='js-orderables-materials'>
+
+  </div>
+</div>
+
+<div class="order_item order_service js-orderables-services">
+  <form id='search-services' class="order_search" action="/api/pos/products/services.json" method="GET">
+    <label class="form-label">服务类别</label><select class="width-80" name="q[category_id_eq]">
+      <option value="">全部</option>
+      <% for category in @service_categories : %>
+        <option value="<%= category.id %>"><%= category.name %></option>
+      <% end %>
+    </select>
+    <label class="form-label">查找关键字</label><input type="text" name="q[name_cont]" value="">
+    <input type="submit" value="查 询">
+  </form>
+
+  <div class="services_order_title orderables_title">
+    <ul>
+      <li>#</li>
+      <li>名称</li>
+      <li>施工时间</li>
+      <li>服务分类</li>
+      <li>积分</li>
+      <li>零售价</li>
+      <li></li>
+    </ul>
+  </div>
+  <div class="services_orders orderables" id='js-orderables-services'>
+
+  </div>
+</div>
+
+<div class="order_item order_package js-orderables-packages">
+  <form id='search-packages' class="order_search" action="/api/pos/products/packages.json" method="GET">
+    <label class="form-label">查找关键字</label><input type="text" name="q[name_cont]" value="">
+    <input type="submit" value="查 询">
+  </form>
+
+  <div class="packages_order_title orderables_title">
+    <ul>
+      <li>#</li>
+      <li>名称</li>
+      <li>有效期</li>
+      <li>积分</li>
+      <li>售价</li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+  <div class="packages_orders orderables" id='js-orderables-packages'></div>
+
+</div>
+
+<div class="order_item order_vip js-orderables-assets">
+	<div class="card_item" id='js-orderables-assets'></div>
+</div>

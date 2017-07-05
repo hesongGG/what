@@ -1,0 +1,81 @@
+
+@mixin col-width{
+
+  &:nth-child(1){ width: 40px;}
+  &:nth-child(2){ width: 100px;}
+  &:nth-child(3){ width: 101px;}
+  &:nth-child(4){ width: 99px;}
+  &:nth-child(5){ width: 92px;}
+  &:nth-child(6){ width: 113px;}
+  &:nth-child(7){ width: 115px;}
+  &:nth-child(8){ width: 118px;}
+  &:nth-child(9){ width: 118px;}
+  &:nth-child(10){ width: 118px;}
+  &:nth-child(11){ width: 116px;}
+  &:nth-child(12){ width: 118px;}
+  &:nth-child(13){ width: 104px;}
+
+}
+
+@mixin border-color{
+  border:1px solid #d9d9d9;
+}
+
+.list_table{
+  .search_nav{
+    .nav_item{ display:inline-block; margin-right:10px;}
+    span{
+      display:inline-block; text-align:right;
+    }
+  }
+  table.commission_list,table.attendance_list,table.salary_list{
+    width:100%;
+    thead{
+      tr{
+        th{
+          @include col-width;
+          @include border-color;
+          box-sizing: border-box;
+          height:35px;
+          &:first-child{ border-right:1px solid #fff;}
+        }
+      }
+    }
+    tbody{
+      tr{
+        &:nth-child(odd){
+          background: #F2F2F2;
+        }
+
+        &:hover{
+          background: #dce2e5;
+        }
+
+        td{
+          @include col-width;
+          height:28px;
+          text-align:center;
+          box-sizing: border-box;
+          @include border-color;
+
+          a:hover, a:hover i{
+            color: #edf2f5;
+          }
+        }
+      }
+    }
+    tfoot{
+      tr{
+        height:28px;
+        td{
+          @include border-color;
+          span{
+            display:inline-block;
+            font-weight:bold;
+            text-align:left;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+<div class="page_head main_top">
+  <span class="font-24 margin-right-15">财物管理> 收入</span>
+</div>
+
+<div class="details">
+
+  <div class="list_table">
+
+  <%= render 'search'%>
+
+  <div class="incomes">
+    <% if @first_category.present? %>
+      <%= render 'item_category' %>
+      <div class="order-items">
+        <%= render "order_items", order_items: @order_items %>
+      </div>
+    <% else %>
+      <h2>无相关数据请重新查询</h2>
+    <% end %>
+    </div>
+
+  </div>
+
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  jQuery(function(){
+    $(".sale-category tr:first-child").addClass("active");
+    $(".sale-category").on('click', 'tr', function(){
+      var url = '/ais/categories/' + $(this).data('category-id') + '/order_items?date=<%= @date.strftime("%Y-%m-%d") %>';
+      $(this).addClass("active").siblings('tr').removeClass("active")
+      $.get(url, function(){
+        return;
+      })
+    })
+  })
+
+</script>

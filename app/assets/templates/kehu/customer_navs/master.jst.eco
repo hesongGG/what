@@ -1,0 +1,7 @@
+<li id="kehushow" class="active"><a href="javascript:void(0)" class="width-90">信息</a></li>
+<li id="zichanzhanghu"><a href="<%= @customer.assetsUrl() %>" class="width-90 ">资产</a></li>
+<li id="zichan"><a href="<%= @customer.repaymentsUrl() %>" class="width-90 ">账户</a></li>
+<li id="cheliangxinxishow"><a href="<%= @customer.vehicleArchivesUrl() %>" class="width-90">车辆档案</a></li>
+<li id="xiaofeijilu"><a href="<%= @customer.ordersUrl() %>" class="width-90">消费记录</a></li>
+<li id="huifangjilu"><a href="<%= @customer.trackingsUrl() %>" class="width-90">回访记录</a></li>
+<li id="tousu"><a href="<%= @customer.complaintsUrl() %>" class="width-90">投诉记录</a></li>

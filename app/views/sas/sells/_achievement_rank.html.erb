@@ -1,0 +1,16 @@
+<div class="personal_achivement">
+  <div class="left">
+    <select class="sort-by width-100">
+      <option value='amount'>按金额</option>
+      <option value='quantity'>按件数</option>
+    </select>
+
+    <div class="rank">
+      <%= render 'rank' %>
+    </div>
+  </div>
+
+  <div class="line_chart">
+    <div id="linchart" class="linechart" style="height:300px;"></div>
+  </div>
+</div>

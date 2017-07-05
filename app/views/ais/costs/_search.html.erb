@@ -1,0 +1,24 @@
+<div class="search_nav">
+  <%= form_tag("/ais/costs", method: :get) do -%>
+    <div class="item-query">
+      <label>时间</label>
+      <%= date_select(
+        "", :date,
+        { start_year: 2000, use_short_month: true, discard_day: true, :default => @date},
+        {:include_blank => @search_date.nil?, class: "width-100" }
+      )
+    %>
+    </div>
+
+    <div class="item-query">
+      <label>仓库选择</label>
+      <%= select_tag :store_depot_id, options_from_collection_for_select(@store_depots, 'id', 'name', params[:store_depot_id]), :include_blank => '所有仓库', class: "width-100" %>
+
+      <%= submit_tag "查询", class: "btn query_btn do_search_result" %>
+    </div>
+
+    <div class="query_div">
+      <a href="#" class="export_btn btn">导出</a>
+    </div>
+  <% end %>
+</div>

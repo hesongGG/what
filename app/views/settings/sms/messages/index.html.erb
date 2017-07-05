@@ -1,0 +1,73 @@
+<div class="main_top">
+  <h2>短信设置</h2>
+</div>
+<div class="details">
+<%= render partial: 'settings/sms/partials/top' %>
+<%= render partial: 'settings/sms/partials/nav' %>
+
+<div class="details_content list_table sms_details_content">
+
+  <div class="functional_bar">
+    <form action="/settings/sms/messages" method="get">
+      <div class="search_bar float-left">
+        <label class="margin-right-8 line-height-25">选择类型</label>
+        <select name="category" id="category">
+          <option value="">所有类型</option>
+
+          <optgroup label="提醒">
+            <% SmsNotifySwitchType.collection.each do |sub_type| %>
+              <option value="<%= SmsNotifySwitchType.name %>-<%= sub_type.id %>"><%= sub_type.name %></option>
+            <% end %>
+          </optgroup>
+
+          <optgroup label="回访">
+            <% SmsTrackingSwitchType.collection.each do |sub_type| %>
+              <option value="<%= SmsTrackingSwitchType.name %>-<%= sub_type.id %>"><%= sub_type.name %></option>
+            <% end %>
+          </optgroup>
+
+          <optgroup label="验证">
+            <% SmsCaptchaSwitchType.collection.each do |sub_type| %>
+              <option value="<%= SmsCaptchaSwitchType.name %>-<%= sub_type.id %>"><%= sub_type.name %></option>
+            <% end %>
+          </optgroup>
+        </select>
+        <span>日期</span>
+        <input type="date" name="start_date" value="<%= params[:start_date]%>">
+        <span>至</span>
+        <input type="date" name="end_date" value="<%= params[:end_date]%>">
+        <input type="submit" class="btn query_btn" value="查询">
+      </div>
+    </form>
+  </div>
+
+  <table border="1" class="index_list sms_record">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>时间</th>
+        <th>手机号码</th>
+        <th>客户名称</th>
+        <th>类别</th>
+        <th>内容</th>
+        <th>条数</th>
+      </tr>
+    <thead>
+    <tbody>
+      <% @records.each_with_index do |record, index| %>
+      <tr>
+        <td class="number"><%= index + 1%></td>
+        <td><%= record.created_at.strftime("%Y-%m-%d")%></td>
+        <td><%= record.phone_number%></td>
+        <td><%= record.receiver_name%></td>
+        <td><%= record.category_cn_name%></td>
+        <td><%= record.content%></td>
+        <td><%= record.quantity%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<script type="text/javascript">
+  $('#category').val("<%= params[:category]%>");
+</script>
